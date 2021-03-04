@@ -42,18 +42,22 @@ public class Adapter extends BaseAdapter{
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        View contactView = layoutInflater.inflate(R.layout.adapter, null);
+        
+        if(convertView == null)
+            convertView=layoutInflater.inflate(R.layout.adapter, null);
+
+
         model user = listData.get(position);
 
-        TextView nameTextView = contactView.findViewById(R.id.textView1);
-        TextView userNameTextView = contactView.findViewById(R.id.textView2);
-        TextView emailTextView = contactView.findViewById(R.id.textView3);
+        TextView nameTextView = convertView.findViewById(R.id.textView1);
+        TextView userNameTextView = convertView.findViewById(R.id.textView2);
+        TextView emailTextView = convertView.findViewById(R.id.textView3);
 
         nameTextView.setText(user.getName());
         userNameTextView.setText(user.getUserName());
         emailTextView.setText(user.getEmail());
 
 
-        return contactView;
+        return convertView;
     }
 }
